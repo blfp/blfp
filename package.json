@@ -1,0 +1,16 @@
+{
+  "name": "blfp",
+  "version": "0.0.1",
+  "description": "blfp.net",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blfp/blfp.git"
+  },
+  "author": "Brad Dunbar <dunbarb2@gmail.com> (http://braddunbar.net/)",
+  "license": "ISC",
+  "homepage": "https://blfp.net"
+}
