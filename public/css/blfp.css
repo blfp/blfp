@@ -1,0 +1,76 @@
+body {
+  padding-top: 50px;
+}
+
+article p {
+  font-size: 18px;
+}
+
+article img {
+  display: block;
+  margin: 20px auto 20px auto;
+  border-radius: 6px;
+}
+
+article img, iframe {
+  max-width: 100%;
+}
+
+section {
+  position: relative;
+  border-bottom: solid 2px #ddd;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+}
+
+section:before {
+  content: '\00a7' !important;
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  color: #ccc;
+  font-size: 28px;
+}
+
+.logo, .recent-posts, .portal, .practitioners {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+.practitioner {
+  margin-bottom: 20px;
+}
+
+a[name]{
+  padding-top: 50px;
+  margin-top: -50px;
+  display: inline-block;
+}
+
+.map-header {
+  width: 100%;
+}
+
+.portal, footer {
+  padding: 20px;
+  color: #777;
+  background-color: #222;
+}
+
+.hours td {
+  padding-right: 15px;
+}
+
+.map-img {
+  margin-right: 20px;
+}
+
+.spotlight {
+  background-image: url('/img/talking-cropped.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}

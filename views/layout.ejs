@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+
+  <title>BL Family Practice</title>
+
+  <link href='/favicon.ico' rel='shortcut icon'>
+  <link href='/css/bootstrap.css' rel='stylesheet'>
+  <link href='/css/blfp.css' rel='stylesheet'>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-2328650-2', 'blfp.net');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+
+<nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#nav'>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+      <a href='/' class='navbar-brand'>BL Family Practice</a>
+    </div>
+    <div class='collapse navbar-collapse' id='nav'>
+      <form class='navbar-form navbar-right' action="https://www.phreesia.net/25/patient/Payment.aspx/Start" method="post">
+        <input type="hidden" name="encrypted" value="HAZsjTGGLBWsIOzKerdu05HXEkhuEoRH5fbXi2Bci2WybLY8aM1zNEsGoZyR1cgfcWs6edofivuVlWDhS3HUgyywsLJ81S33m2bm_RtYhn28Q-FMuZvf2cVYspSwG5b_LkItQHHbSsXPy98tDYIfWO52xeW_4wKHhBtK19ZJIfL4p91iHb4jhKZKmf09iP9zfgZ01GVIpUjQxWG2nRxluRR79bpRTeShbt_kdRrVBqKnzhP4K5bePWUXq1QzZYfJi5tiZG8QmaXkXK1Y1YpPzq1lJPo_LMMGoIihLv00E0C9MrkSKc3IiN7Rt-RJq3IuFMD1vXDQGbEc2lJaI1xpu6oj1lh6IQNHy6rmhMp_GRlgSoP25vHYinamIWNM-1VG0">
+        <button type='submit' class='btn btn-default'>
+          <span class="glyphicon glyphicon-usd"></span>
+          Make a Payment
+        </button>
+      </form>
+      <ul class='nav navbar-nav'>
+        <li>
+          <a href='<%= portalUrl %>'>Patient Portal</a>
+        </li>
+        <li>
+          <a href='#contact'>Contact</a>
+        </li>
+        <li>
+          <a href='/blog'>Blog</a>
+        </li>
+        <li>
+          <a href='/#practitioners'>Practitioners</a>
+        </li>
+        <li>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
+            Staff <b class='caret'></b>
+          </a>
+          <ul class='dropdown-menu'>
+            <li class='dropdown-header'>Schedules</li>
+            <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=br7h1dtavekpimh3rufd5s0s04%40group.calendar.google.com'>All</a></li>
+            <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=r211hbqesklh28rkdu0ev436no%40group.calendar.google.com'>Admin</a></li>
+            <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=ops2utaesdpc5j0ddj0v4cc1ek%40group.calendar.google.com'>Clerical</a></li>
+            <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=blfamilypractice%40gmail.com'>Clinical</a></li>
+            <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=c29q2bfa65pe6gblpmpuq69f0g%40group.calendar.google.com'>Practitioners</a></li>
+            <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=n77g5a8nilbscpi1eh80jc4cps%40group.calendar.google.com'>Lunch</a></li>
+            <li class='divider'></li>
+            <li class='dropdown-header'>Admin</li>
+            <li><a target='_blank' href='http://www.google.com/a/blfp.net'>Google Apps Admin</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<%- content %>
+
+<footer>
+  <a name='contact'></a>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <h3>
+          <span class='glyphicon glyphicon-phone-alt'></span>
+          Contact
+        </h3>
+        <h4>
+          (803) 532-8155
+        </h4>
+        <h4>
+          (803) 532-9685
+          <small>FAX</small>
+        </h4>
+      </div>
+      <div class='col-sm-4'>
+        <h3>
+          <span class='glyphicon glyphicon-time'></span>
+          Hours
+        </h3>
+        <table class='hours'>
+          <tr><td>Monday-Friday</td><td>8am-5:30pm</td></tr>
+          <tr><td>Saturday</td><td>8:30am-12pm</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <div class='col-sm-4'>
+        <a class='map-img pull-right hidden-xs hidden-sm hidden-md' target='_blank' href='https://www.google.com/maps/place/B-L+Family+Practice/@33.919689,-81.503076,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0xab1b2d27a2605bce'>
+          <img class='img-rounded' src='//maps.googleapis.com/maps/api/staticmap?center=608+E+Columbia+Ave,Leesville+SC&size=150x150&key=<%= mapsKey %>'>
+        </a>
+        <h3>
+          <span class='glyphicon glyphicon-map-marker'></span>
+          Location
+        </h3>
+        <p>
+          <address>
+            B-L Family Practice<br>
+            608 E Columbia Ave<br>
+            Leesville SC, 29070
+          </address>
+        </p>
+      </div>
+    </div>
+    <hr>
+    <p>
+      &copy; 2014 BL Family Practice
+      <span class='hidden-xs hidden-sm hidden-md'>
+        &bull;
+        <span class='glyphicon glyphicon-phone'></span>
+        Also available on mobile devices.
+      </span>
+    </p>
+  </div>
+</footer>
+
+<script src='/js/jquery.js'></script>
+<script src='/js/bootstrap.js'></script>
+
+</body>
+</html>

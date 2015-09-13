@@ -1,0 +1,152 @@
+<div class='container text-center logo'>
+  <img src='/img/logo.png'>
+</div>
+
+<div class='jumbotron spotlight'>
+  <div class='container'>
+    <h1>Patient Portal</h1>
+    <p>
+      Did you know you can request refills online?
+    </p>
+    <p>
+      <a href='<%= portalUrl %>' class='btn btn-primary btn-lg' role='button'>
+        Sign Up
+      </a>
+    </p>
+  </div>
+</div>
+
+<div class='container recent-posts'>
+  <div class='row'>
+    <%#
+    {% for post in site.posts limit: 3 %}
+      <div class='col-sm-4 text-center'>
+        <h2><a href='{{ post.url }}'>{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+        <p><a class='btn btn-default' href='{{ post.url }}' role='button'>Read More &raquo;</a></p>
+      </div>
+    {% endfor %}
+    %>
+  </div>
+</div>
+
+<div class='portal'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3 text-center'>
+        <h1>Patient Portal</h1>
+        <p class='lead'>
+          Did you know you can request medicine refills online?  You can also
+          schedule appointments and access lab results.  Sign up today to help
+          our practice work better for you.
+        </p>
+        <p>
+          <a class='btn btn-primary' href='<%= portalUrl %>'>Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='container practitioners'>
+
+  <a name='practitioners'></a>
+
+  <div class='row practitioner'>
+    <div class='col-md-2 col-sm-4 text-center'>
+      <img class='img-rounded' src='/img/drdunbar-small.jpg'>
+    </div>
+    <div class='col-md-4 col-sm-8'>
+      <h3>
+        Dr. Dunbar
+        <small>MD, FAAFP</small>
+      </h3>
+      <p>
+        Dr. Dunbar is a native of Spartanburg and a graduate of The University
+        of South Carolina. Dr. Dunbar received his doctorate of medicine at The
+        University of South Carolina School of Medicine and completed his
+        Family Practice Residency at Spartanburg Regional Hospital. He is a
+        board certified Family Practice Physician and has been in private
+        practice since 1986.
+      </p>
+    </div>
+    <div class='col-md-2 col-sm-4 text-center'>
+      <img class='img-rounded' src='/img/mrsdunbar-small.jpg'>
+    </div>
+    <div class='col-md-4 col-sm-8'>
+      <h3>
+        Mrs. Dunbar
+        <small>MS, FNP</small>
+      </h3>
+      <p>
+        Mrs. Dunbar is a graduate of The University of South Carolina. She
+        received her Master of Science in Nursing from The University of South
+        Carolina School of Nursing. She is board certified as a Family Nurse
+        Practitioner and has been in private practice since 1986.
+      </p>
+    </div>
+  </div>
+
+  <div class='row practitioner'>
+    <div class='col-md-2 col-sm-4 text-center'>
+      <img class='img-rounded' src='/img/mrscraig-small.jpg'>
+    </div>
+    <div class='col-md-4 col-sm-8'>
+      <h3>
+        Mrs. Craig
+        <small>MN, FNP</small>
+      </h3>
+      <p>
+        Mrs. Craig is a graduate of the University of Arizona. She received her
+        Master of Nursing from The University of South Carolina School of
+        Nursing. She is board certified as a Family Nurse Practitioner and has
+        been in private practice since 1994.
+      </p>
+    </div>
+    <div class='col-md-2 col-sm-4 text-center'>
+      <img class='img-rounded' src='/img/mrscooney-small.jpg'>
+    </div>
+    <div class='col-md-4 col-sm-8'>
+      <h3>
+        Mrs. Cooney
+        <small>PA-C</small>
+      </h3>
+      <p>
+        Mrs. Cooney received a masters in Physician Assistant studies from
+        South University of Savannah, GA in 2012.  She has long been interested
+        in family practice as she has worked with us in the past as a nurse
+        assistant.  She graduated from Batesburg-Leesville High School in 2004
+        and is a University of South Carolina alum.  She is the daughter of CP
+        and Christy Dunbar.
+      </p>
+    </div>
+  </div>
+
+  <div class='row practitioner'>
+    <div class='col-md-2 col-sm-4 text-center'>
+      <img class='img-rounded' src='/img/mrsgentry-small.jpg'>
+    </div>
+    <div class='col-md-4 col-sm-8'>
+      <h3>
+        Mrs. Gentry
+        <small>FNP</small>
+      </h3>
+      <p>
+        Nurse Practitioner Marisa Gentry is originally from Baltimore,
+        Maryland. She received a Bachelor’s degree in Nursing from the University of
+        South Carolina in 2010. She worked as a Registered Nurse at Providence Hospital
+        until June 2014. Marisa received a Master’s degree in Nursing from the
+        University of South Carolina in May 2014 and is board certified by the American
+        Nurses Credentialing Center as a Family Nurse Practitioner. She is interested
+        in caring for patients with a variety of healthcare needs and loves the
+        opportunity to educate patients. Marisa lives in Chapin with her husband. She
+        loves all activities that involve spending time with her family and friends,
+        especially traveling, cooking, and being outdoors.
+      </p>
+    </div>
+    <div class='col-md-6 col-sm-12 text-center'>
+      <img src='/img/steth-small.jpg'>
+    </div>
+  </div>
+
+</div>
