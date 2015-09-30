@@ -1,0 +1,11 @@
+<section class='container'>
+  <article>
+    <h1>
+      <a href='/posts/<%= post.id %>'><%= post.title %></a>
+    </h1>
+    <small class='text-muted'>
+      <date><%= moment(post.date).format('ll') %></date> by <%= post.user.name %>
+    </small>
+    <%- marked(post.body) %>
+  </article>
+</section>

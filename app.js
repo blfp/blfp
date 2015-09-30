@@ -27,6 +27,7 @@ app.use(require('./mid/flash'))
 // Routes
 app.use('/admin', require('./routes/admin'))
 app.use('/auth', require('./routes/auth'))
+app.use('/posts', require('./routes/posts'))
 
 // Home
 app.get('/', function (req, res) {

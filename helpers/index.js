@@ -1,5 +1,6 @@
 'use strict'
 
+exports.moment = require('moment')
 exports.marked = require('marked')
 
 // Google Maps API Key

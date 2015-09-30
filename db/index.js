@@ -15,3 +15,13 @@ db.User.hasMany('tokens', {
   key: 'user_id',
   model: db.Token
 })
+
+db.Post.belongsTo('user', {
+  key: 'user_id',
+  model: db.User
+})
+
+db.User.hasMany('posts', {
+  key: 'user_id',
+  model: db.Post
+})
