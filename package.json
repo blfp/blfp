@@ -27,8 +27,12 @@
   },
   "devDependencies": {
     "autoprefixer": "6.0.3",
+    "bootstrap": "3.3.5",
+    "browserify": "11.2.0",
     "cssnano": "3.2.0",
+    "jquery": "2.1.4",
     "less": "2.5.3",
-    "postcss-cli": "2.1.0"
+    "postcss-cli": "2.1.0",
+    "uglify-js": "2.4.24"
   }
 }

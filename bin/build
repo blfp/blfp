@@ -4,3 +4,5 @@ lessc css/app.less | postcss \
 --use autoprefixer \
 --use cssnano \
 > public/css/app.css
+
+browserify js/app.js | uglifyjs > public/js/app.js
