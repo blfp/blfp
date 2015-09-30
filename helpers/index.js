@@ -1,5 +1,7 @@
 'use strict'
 
+exports.marked = require('marked')
+
 // Google Maps API Key
 exports.mapsKey = 'AIzaSyAzuFFZQFL8uQCUS2Dx9MJYDq1t0WOD3js'
 

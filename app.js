@@ -1,6 +1,7 @@
 'use strict'
 
 // Vendor
+let db = require('./db')
 let ozymandias = require('ozymandias')
 let body = require('body-parser')
 let multer = require('multer')
@@ -29,7 +30,9 @@ app.use('/auth', require('./routes/auth'))
 
 // Home
 app.get('/', function (req, res) {
-  res.render('index')
+  db.Post.limit(3).all().then(function (posts) {
+    res.render('index', {posts: posts})
+  }).catch(res.error)
 })
 
 // 404

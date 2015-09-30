@@ -1,0 +1,9 @@
+<main class='container'>
+  <h1>Edit Post</h1>
+  <a href='/admin/posts' class='pull-right'>
+    &larr; All Posts
+  </a>
+  <form method='post' action='/admin/posts/<%= post.id %>' enctype='multipart/form-data'>
+    <% include form %>
+  </form>
+</main>

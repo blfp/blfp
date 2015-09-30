@@ -1,0 +1,24 @@
+<main class='container'>
+  <h1>
+    Posts
+    <a class='btn btn-default btn-xs' href='/admin/posts/new'>+ New Post</a>
+  </h1>
+  <hr>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% posts.forEach(function(post) { %>
+        <tr>
+          <td><a class='btn btn-default btn-xs' href='/admin/posts/<%= post.id %>'>Edit</a></td>
+          <td><%= post.title %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+

@@ -1,5 +1,6 @@
 'use strict'
 
+let marked = require('marked')
 let Model = require('./model')
 
 class Post extends Model {
@@ -33,6 +34,15 @@ class Post extends Model {
 
   set body (value) {
     this.data.set('body', value || '')
+  }
+
+  get excerpt () {
+    return marked(this.body)
+      .replace(/<[^>]+>/ig, '')
+      .trim()
+      .split(/\s+/ig)
+      .slice(0, 40)
+      .join(' ')
   }
 
 }
