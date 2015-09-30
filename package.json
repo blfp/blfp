@@ -18,6 +18,7 @@
   "license": "ISC",
   "homepage": "https://blfp.net",
   "dependencies": {
+    "cookie-session": "1.2.0",
     "ozymandias": "git://github.com/braddunbar/ozymandias.git#ce674b54bf671d5f27e772dbdac9591406abb7bc"
   }
 }

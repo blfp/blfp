@@ -1,11 +1,20 @@
+'use strict'
+
 // Vendor
-var ozymandias = require('ozymandias')
+let ozymandias = require('ozymandias')
+let session = require('cookie-session')
 
 // The App!
-var app = module.exports = ozymandias()
+let app = module.exports = ozymandias()
 app.locals = require('./helpers')
 
 // Middleware
+app.use(session({
+  signed: app.get('env') === 'production',
+  name: 'blfp',
+  secret: process.env.SECRET,
+  maxAge: 1000 * 60 * 60 * 24 * 7
+}))
 app.use(ozymandias.static('public'))
 
 // Routes
