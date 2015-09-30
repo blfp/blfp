@@ -9,6 +9,9 @@
       <tr>
         <th></th>
         <th>Title</th>
+        <th>Date</th>
+        <th>Author</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +19,9 @@
         <tr>
           <td><a class='btn btn-default btn-xs' href='/admin/posts/<%= post.id %>'>Edit</a></td>
           <td><%= post.title %></td>
+          <td><%= moment(post.published_on).format('ll') %></td>
+          <td><%= post.user.name %></td>
+          <td><%= post.excerpt %></td>
         </tr>
       <% }) %>
     </tbody>

@@ -1,1 +1,1 @@
-alter table users add column is_admin boolean not null default false;
+alter table posts add column published_on date;

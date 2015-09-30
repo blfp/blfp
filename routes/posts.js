@@ -10,7 +10,8 @@ router.param('post_id', find('post', function () {
 }))
 
 router.get('/', function (req, res) {
-  db.Post.include('user').all().then(function (posts) {
+  db.Post.order(['published_on', 'descending']).include('user').all()
+  .then(function (posts) {
     res.render('posts/index', {posts: posts})
   }).catch(res.error)
 })

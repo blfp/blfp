@@ -31,7 +31,8 @@ app.use('/posts', require('./routes/posts'))
 
 // Home
 app.get('/', function (req, res) {
-  db.Post.limit(3).all().then(function (posts) {
+  db.Post.order(['published_on','descending']).limit(3).all()
+  .then(function (posts) {
     res.render('index', {posts: posts})
   }).catch(res.error)
 })

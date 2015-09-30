@@ -70,7 +70,8 @@ CREATE TABLE posts (
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
     title character varying(255) DEFAULT ''::character varying NOT NULL,
-    body text DEFAULT ''::text NOT NULL
+    body text DEFAULT ''::text NOT NULL,
+    published_on date
 );
 
 

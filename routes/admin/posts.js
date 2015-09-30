@@ -6,11 +6,12 @@ let ozymandias = require('ozymandias')
 let router = module.exports = ozymandias.Router()
 
 router.param('post_id', find('post', function () {
-  return db.Post
+  return db.Post.include('user')
 }))
 
 router.get('/', function (req, res) {
-  db.Post.all().then(function (posts) {
+  db.Post.include('user').order(['published_on', 'descending']).all()
+  .then(function (posts) {
     res.render('admin/posts/index', {posts: posts})
   }).catch(res.error)
 })
@@ -24,13 +25,14 @@ router.get('/:post_id', function (req, res) {
 })
 
 router.post('/:post_id', function (req, res) {
-  req.post.update(req.permit('title', 'body')).then(function () {
+  req.post.update(req.permit('title', 'body', 'published_on'))
+  .then(function () {
     res.redirect(`/admin/posts`)
   }).catch(res.error)
 })
 
 router.post('/', function (req, res) {
-  let values = req.permit('title', 'body')
+  let values = req.permit('title', 'body', 'published_on')
   values.user_id = req.user.id
   db.Post.create(values).then(function (post) {
     res.redirect(`/admin/posts/${post.id}`)
