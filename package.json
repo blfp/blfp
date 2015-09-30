@@ -22,6 +22,7 @@
     "bcrypt": "0.8.5",
     "body-parser": "1.13.2",
     "cookie-session": "1.2.0",
+    "marked": "0.3.5",
     "multer": "0.1.8",
     "ozymandias": "git://github.com/braddunbar/ozymandias.git#ce674b54bf671d5f27e772dbdac9591406abb7bc"
   },

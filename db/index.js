@@ -2,6 +2,7 @@
 
 let db = module.exports = require('./db')
 
+db.Post = require('./post')
 db.User = require('./user')
 db.Token = require('./token')
 
