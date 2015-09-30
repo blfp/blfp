@@ -1,0 +1,6 @@
+#!/bin/sh -e
+
+lessc css/app.less | postcss \
+--use autoprefixer \
+--use cssnano \
+> public/css/app.css

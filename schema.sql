@@ -15,6 +15,8 @@ ALTER TABLE ONLY public.tokens DROP CONSTRAINT tokens_user_id_fkey;
 DROP INDEX public.users_lower_case_email_index;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
 ALTER TABLE ONLY public.tokens DROP CONSTRAINT tokens_pkey;
+ALTER TABLE public.users ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE public.users_id_seq;
 DROP TABLE public.users;
 DROP TABLE public.tokens;
 DROP EXTENSION plpgsql;
@@ -77,6 +79,32 @@ CREATE TABLE users (
     first character varying(255) DEFAULT ''::character varying NOT NULL,
     last character varying(255) DEFAULT ''::character varying NOT NULL
 );
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --

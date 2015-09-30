@@ -7,6 +7,7 @@
     "iojs": "2.5.0"
   },
   "scripts": {
+    "build": "./bin/build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "foreman start"
   },
@@ -18,7 +19,16 @@
   "license": "ISC",
   "homepage": "https://blfp.net",
   "dependencies": {
+    "bcrypt": "0.8.5",
+    "body-parser": "1.13.2",
     "cookie-session": "1.2.0",
+    "multer": "0.1.8",
     "ozymandias": "git://github.com/braddunbar/ozymandias.git#ce674b54bf671d5f27e772dbdac9591406abb7bc"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.0.3",
+    "cssnano": "3.2.0",
+    "less": "2.5.3",
+    "postcss-cli": "2.1.0"
   }
 }

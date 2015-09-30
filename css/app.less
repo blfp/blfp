@@ -1,3 +1,9 @@
+// Vendor
+@import 'bootstrap';
+
+// Modules
+@import 'messages';
+
 body {
   padding-top: 50px;
 }
@@ -30,6 +36,11 @@ section:before {
   bottom: -20px;
   color: #ccc;
   font-size: 28px;
+}
+
+main {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .logo, .recent-posts, .portal, .practitioners {
@@ -73,4 +84,9 @@ a[name]{
   background-image: url('/img/talking-cropped.jpg');
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.panel-small {
+  max-width: 500px;
+  margin: 20px auto;
 }

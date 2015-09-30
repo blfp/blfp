@@ -8,8 +8,7 @@
   <title>BL Family Practice</title>
 
   <link href='/favicon.ico' rel='shortcut icon'>
-  <link href='/css/bootstrap.css' rel='stylesheet'>
-  <link href='/css/blfp.css' rel='stylesheet'>
+  <link href='/css/app.css' rel='stylesheet'>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -23,6 +22,15 @@
 <body>
 
 <nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+  <div id='message' <% if (locals.flash) { %>class='active'<% } %>>
+    <% if (locals.flash) { %>
+      <% if (flash.success) { %>
+        <span class='alert alert-success'><%= flash.success %></span>
+      <% } else if (flash.error) { %>
+        <span class='alert alert-danger'><%= flash.error %></span>
+      <% } %>
+    <% } %>
+  </div>
   <div class='container'>
     <div class='navbar-header'>
       <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#nav'>

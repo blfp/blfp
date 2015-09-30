@@ -1,5 +1,5 @@
 create table users (
-  id integer primary key,
+  id serial primary key,
   created_at timestamp default now() not null,
   updated_at timestamp default now() not null,
   email varchar(255) not null,
