@@ -124,6 +124,7 @@ router.post('/signin', function (req, res) {
     }
 
     req.session.userId = req.user.id
+    res.flash('success', `Hi ${req.user.first}!`)
     res.redirect('/')
   })
 })
