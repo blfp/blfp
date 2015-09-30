@@ -24,6 +24,7 @@ app.use(require('./mid/user'))
 app.use(require('./mid/flash'))
 
 // Routes
+app.use('/admin', require('./routes/admin'))
 app.use('/auth', require('./routes/auth'))
 
 // Home
