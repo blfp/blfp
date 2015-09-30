@@ -52,7 +52,7 @@ class User extends Model {
     this.data.set('last', value || '')
   }
 
-  name () {
+  get name () {
     return `${this.first} ${this.last}`.trim()
   }
 

@@ -66,6 +66,14 @@
             Staff <b class='caret'></b>
           </a>
           <ul class='dropdown-menu'>
+            <% if (locals.user) { %>
+              <li class='dropdown-header'>
+                <%= user.name %>
+                <br>
+                <%= user.email %>
+              </li>
+              <li class='divider'></li>
+            <% } %>
             <li class='dropdown-header'>Schedules</li>
             <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=br7h1dtavekpimh3rufd5s0s04%40group.calendar.google.com'>All</a></li>
             <li><a target='_blank' href='http://www.google.com/calendar/hosted/blfp.net/embed?ctz=America/New_York&src=r211hbqesklh28rkdu0ev436no%40group.calendar.google.com'>Admin</a></li>
