@@ -11,6 +11,7 @@ class User extends Model {
   static get columns () {
     return [
       'id',
+      'is_admin',
       'email',
       'first',
       'last',

@@ -115,7 +115,8 @@ CREATE TABLE users (
     email character varying(255) NOT NULL,
     password character varying(255) NOT NULL,
     first character varying(255) DEFAULT ''::character varying NOT NULL,
-    last character varying(255) DEFAULT ''::character varying NOT NULL
+    last character varying(255) DEFAULT ''::character varying NOT NULL,
+    is_admin boolean DEFAULT false NOT NULL
 );
 
 
