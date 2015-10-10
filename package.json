@@ -22,7 +22,6 @@
   "dependencies": {
     "autoprefixer": "6.0.3",
     "bcrypt": "0.8.5",
-    "body-parser": "1.13.2",
     "bootstrap": "3.3.5",
     "browserify": "11.2.0",
     "cookie-session": "1.2.0",
@@ -32,7 +31,7 @@
     "marked": "0.3.5",
     "moment": "2.10.6",
     "multer": "0.1.8",
-    "ozymandias": "git://github.com/braddunbar/ozymandias.git#99392f2d958224cf6bf83e0799be0dbc6e4e72d4",
+    "ozymandias": "git://github.com/braddunbar/ozymandias.git#6586852bafd94722ab0fe2e58f2872dd286bfaae",
     "postcss-cli": "2.1.0",
     "uglify-js": "2.4.24"
   }
