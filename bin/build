@@ -1,8 +1,12 @@
 #!/bin/sh -e
 
+mkdir -p public/css
+
 lessc css/app.less | postcss \
 --use autoprefixer \
 --use cssnano \
 > public/css/app.css
+
+mkdir -p public/js
 
 browserify js/app.js | uglifyjs > public/js/app.js
