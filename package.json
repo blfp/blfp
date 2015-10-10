@@ -4,12 +4,13 @@
   "description": "blfp.net",
   "main": "index.js",
   "engines": {
-    "iojs": "2.5.0"
+    "node": "4.1.2"
   },
   "scripts": {
     "build": "./bin/build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "foreman start"
+    "postinstall": "./bin/postinstall",
+    "start": "heroku local",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,21 +20,19 @@
   "license": "ISC",
   "homepage": "https://blfp.net",
   "dependencies": {
+    "autoprefixer": "6.0.3",
     "bcrypt": "0.8.5",
     "body-parser": "1.13.2",
-    "cookie-session": "1.2.0",
-    "marked": "0.3.5",
-    "moment": "2.10.6",
-    "multer": "0.1.8",
-    "ozymandias": "git://github.com/braddunbar/ozymandias.git#795b1d6a33a95b4421d227d145dbd6ca7485af28"
-  },
-  "devDependencies": {
-    "autoprefixer": "6.0.3",
     "bootstrap": "3.3.5",
     "browserify": "11.2.0",
+    "cookie-session": "1.2.0",
     "cssnano": "3.2.0",
     "jquery": "2.1.4",
     "less": "2.5.3",
+    "marked": "0.3.5",
+    "moment": "2.10.6",
+    "multer": "0.1.8",
+    "ozymandias": "git://github.com/braddunbar/ozymandias.git#99392f2d958224cf6bf83e0799be0dbc6e4e72d4",
     "postcss-cli": "2.1.0",
     "uglify-js": "2.4.24"
   }

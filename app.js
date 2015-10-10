@@ -20,7 +20,6 @@ app.use(session({
 }))
 app.use(body.urlencoded({extended: false}))
 app.use(multer({dest: './tmp/uploads/', putSingleFilesInArray: true}))
-app.use(ozymandias.static('public'))
 app.use(require('./mid/user'))
 app.use(require('./mid/flash'))
 
