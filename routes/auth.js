@@ -17,13 +17,8 @@ router.param('token_id', find('token', function () {
 function findUser (req, res, next) {
   db.User.where('lower(email) = lower(?)', req.body.email).find()
   .then(function (user) {
-    if (user) {
-      req.user = res.locals.user = user
-      return next()
-    }
-    res.status(404).render('auth/forgot', {
-      error: 'Sorry! We don’t recognize that email.'
-    })
+    if (user) req.user = res.locals.user = user
+    next()
   }).catch(res.error)
 }
 
@@ -36,6 +31,12 @@ router.post('/forgot', findUser)
 router.post('/forgot', function (req, res) {
   let expires_at = new Date()
   expires_at.setDate(expires_at.getDate() + 7)
+
+  if (!req.user) {
+    return res.status(404).render('auth/forgot', {
+      error: 'Sorry! We don’t recognize that email.'
+    })
+  }
 
   db.transaction(function () {
     return db.Token.create({
@@ -107,6 +108,12 @@ router.get('/signin', function (req, res) {
 router.post('/signin', findUser)
 router.post('/signin', function (req, res) {
   let password = (req.body.password || '').trim()
+
+  if (!req.user) {
+    return res.status(404).render('auth/signin', {
+      error: 'Sorry! We don’t recognize that email.'
+    })
+  }
 
   bcrypt.compare(password, req.user.password, function (e, match) {
     if (e) {
