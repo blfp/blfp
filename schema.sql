@@ -14,6 +14,7 @@ SET search_path = public, pg_catalog;
 ALTER TABLE ONLY public.tokens DROP CONSTRAINT tokens_user_id_fkey;
 ALTER TABLE ONLY public.posts DROP CONSTRAINT posts_user_id_fkey;
 DROP INDEX public.users_lower_case_email_index;
+DROP INDEX public.post_published_on_index;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
 ALTER TABLE ONLY public.tokens DROP CONSTRAINT tokens_pkey;
 ALTER TABLE ONLY public.posts DROP CONSTRAINT posts_pkey;
@@ -176,6 +177,13 @@ ALTER TABLE ONLY tokens
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: post_published_on_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX post_published_on_index ON posts USING btree (published_on);
 
 
 --
