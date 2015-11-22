@@ -18,7 +18,7 @@
         <tr>
           <td><a class='btn btn-default btn-xs' href='/admin/posts/<%= post.id %>'>Edit</a></td>
           <td><%= post.title %></td>
-          <td><%= moment(post.published_on).format('ll') %></td>
+          <td><%= post.published_on ? moment(post.published_on).format('ll') : 'Not Published' %></td>
           <td><%= post.user.name %></td>
         </tr>
       <% }) %>

@@ -37,6 +37,14 @@ class Post extends Model {
     this.data.set('body', value || '')
   }
 
+  get published_on () {
+    return this.data.get('published_on') || null
+  }
+
+  set published_on (value) {
+    this.data.set('published_on', value || null)
+  }
+
   get excerpt () {
     return marked(this.body)
       .replace(/<[^>]+>/ig, '')

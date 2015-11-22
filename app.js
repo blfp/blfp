@@ -3,7 +3,6 @@
 // Vendor
 let db = require('./db')
 let ozymandias = require('ozymandias')
-let multer = require('multer')
 let session = require('cookie-session')
 
 // The App!
@@ -17,7 +16,6 @@ app.use(session({
   secret: process.env.SECRET,
   maxAge: 1000 * 60 * 60 * 24 * 7
 }))
-app.use(multer({dest: './tmp/uploads/', putSingleFilesInArray: true}))
 app.use(require('./mid/user'))
 app.use(require('./mid/flash'))
 
@@ -28,7 +26,10 @@ app.use('/posts', require('./routes/posts'))
 
 // Home
 app.get('/', function (req, res) {
-  db.Post.order(['published_on','descending']).limit(3).all()
+  db.Post
+  .not({published_on: null})
+  .order(['published_on','descending'])
+  .limit(3).all()
   .then(function (posts) {
     res.render('index', {posts: posts})
   }).catch(res.error)
