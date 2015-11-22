@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "blfp.net",
   "main": "index.js",
-  "cacheDirectories": [],
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "engines": {
     "node": "5.1.0",
     "npm": "3.4.1"
