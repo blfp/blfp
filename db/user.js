@@ -1,32 +1,17 @@
 'use strict'
 
-let Model = require('./model')
-
-class User extends Model {
+class User extends require('ozymandias/user') {
 
   static get tableName () {
     return 'users'
   }
 
   static get columns () {
-    return [
-      'id',
+    return super.columns.concat([
       'is_admin',
-      'email',
       'first',
-      'last',
-      'password',
-      {name: 'created_at', property: 'createdAt'},
-      {name: 'updated_at', property: 'updatedAt'}
-    ]
-  }
-
-  get email () {
-    return this.data.get('email') || ''
-  }
-
-  set email (value) {
-    this.data.set('email', value || '')
+      'last'
+    ])
   }
 
   get is_admin () {
