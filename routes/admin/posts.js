@@ -1,13 +1,10 @@
 'use strict'
 
 let db = require('../../db')
-let find = require('../../mid/find')
 let ozymandias = require('ozymandias')
 let router = module.exports = ozymandias.Router()
 
-router.param('post_id', find('post', function () {
-  return db.Post.include('user')
-}))
+router.find('post', () => db.Post.include('user'))
 
 router.get('/', function (req, res) {
   db.Post.include('user').order(['published_on', 'descending']).all()

@@ -1,34 +1,25 @@
 'use strict'
 
-let bcrypt = require('bcrypt')
-let crypto = require('crypto')
-let ozymandias = require('ozymandias')
-let find = require('../mid/find')
-let db = require('../db')
-
-let router = module.exports = ozymandias.Router()
+const router = module.exports = require('ozymandias').Router()
+const db = require('../db')
 
 // Find Token
-router.param('token_id', find('token', function () {
-  return db.Token.include('user')
-}))
+router.find('token', () => db.Token.include('user'))
 
 // Find User
 function findUser (req, res, next) {
   db.User.where('lower(email) = lower(?)', req.body.email).find()
-  .then(function (user) {
-    if (user) req.user = res.locals.user = user
+  .then((user) => {
+    req.user = res.locals.user = user
     next()
   }).catch(res.error)
 }
 
 // Forgot
-router.get('/forgot', function (req, res) {
-  res.render('auth/forgot')
-})
+router.get('/forgot', (req, res) => res.render('auth/forgot'))
 
 router.post('/forgot', findUser)
-router.post('/forgot', function (req, res) {
+router.post('/forgot', (req, res) => {
   let expires_at = new Date()
   expires_at.setDate(expires_at.getDate() + 7)
 
@@ -38,26 +29,23 @@ router.post('/forgot', function (req, res) {
     })
   }
 
-  db.transaction(function () {
-    return db.Token.create({
-      user_id: req.user.id,
-      expires_at: expires_at,
-      id: crypto.randomBytes(20).toString('hex')
-    })
-  }).then(function (token) {
+  db.Token.create({
+    user_id: req.user.id,
+    expires_at: expires_at
+  }).then((token) => {
     return req.mail('mail/forgot', {
       to: [req.user.email],
       subject: `${process.env.NAME}: Password Reset`,
       url: `http://${req.get('host')}/auth/reset/${token.id}`
     })
-  }).then(function () {
+  }).then(() => {
     res.flash('success', 'Thanks! We sent you an email to reset your password.')
     res.redirect('/auth/signin')
   }).catch(res.error)
 })
 
 // Reset
-router.get('/reset/:token_id', function (req, res) {
+router.get('/reset/:token_id', (req, res) => {
   if (!req.token || req.token.expires_at < new Date()) {
     return res.status(404).render('auth/reset', {
       error: 'Sorry! That token is expired.'
@@ -67,7 +55,7 @@ router.get('/reset/:token_id', function (req, res) {
   res.render('auth/reset')
 })
 
-router.post('/reset/:token_id', function (req, res) {
+router.post('/reset/:token_id', (req, res) => {
   if ((req.body.password || '').length < 8) {
     return res.status(422).render('auth/reset', {
       error: 'Sorry! Passwords must be at least eight characters long.'
@@ -80,114 +68,41 @@ router.post('/reset/:token_id', function (req, res) {
     })
   }
 
-  // Hash the password and store the user.
-  bcrypt.hash(req.body.password, 12, function (e, hash) {
-    if (e) {
-      console.log(e)
-      return res.status(500).render('500')
-    }
-    req.token.user.update({password: hash}).then(function () {
-      res.flash('success', 'Password Changed')
-      req.session.userId = req.token.user.id
-      res.redirect('/')
-    })
-  })
+  req.token.user.update(req.permit('password')).then(() => {
+    res.flash('success', 'Password Changed')
+    req.signIn(req.token.user)
+    res.redirect('/')
+  }).catch(res.error)
 })
 
 // Sign Out
-router.get('/signout', function (req, res) {
-  req.session = null
+router.get('/signout', (req, res) => {
+  req.signOut()
   res.redirect('/')
 })
 
 // Sign In
-router.get('/signin', function (req, res) {
-  res.render('auth/signin')
-})
+router.get('/signin', (req, res) => res.render('auth/signin'))
 
 router.post('/signin', findUser)
-router.post('/signin', function (req, res) {
-  let password = (req.body.password || '').trim()
-
+router.post('/signin', (req, res) => {
   if (!req.user) {
     return res.status(404).render('auth/signin', {
       error: 'Sorry! We don’t recognize that email.'
     })
   }
 
-  bcrypt.compare(password, req.user.password, function (e, match) {
-    if (e) {
-      console.log(e)
-      return res.status(500).render('500')
-    }
-
-    // Is the password correct?
-    if (!match) {
-      res.status(422).render('auth/signin', {
-        email: req.body.email,
-        error: 'Sorry! That password is incorrect.'
-      })
+  // Is the password correct?
+  req.user.authenticate(req.body.password).then((match) => {
+    if (match) {
+      req.signIn(req.user)
+      res.redirect('/')
       return
     }
 
-    req.session.userId = req.user.id
-    res.flash('success', `Hi ${req.user.first}!`)
-    res.redirect('/')
-  })
-})
-
-// Sign Up
-router.get('/signup', function (req, res) {
-  res.render('auth/signup')
-})
-
-router.post('/signup', function (req, res) {
-  let email = (req.body.email || '').trim()
-  let password = (req.body.password || '').trim()
-
-  // Validate the password.
-  if (password.length < 8) {
-    res.status(422).render('auth/signup', {
-      email: email,
-      error: 'Password must be at least eight characters long.'
+    res.status(422).render('auth/signin', {
+      email: req.body.email,
+      error: 'Sorry! That password is incorrect.'
     })
-    return
-  }
-
-  // Validate the email.
-  if (!/\S+@\S+\.\S+/.test(email)) {
-    res.status(422).render('auth/signup', {
-      error: 'Please enter a valid email address.'
-    })
-    return
-  }
-
-  db.User.where('lower(email) = lower(?)', email).find().then(function (user) {
-    // Does this user already exist?
-    if (user) {
-      res.status(422).render('auth/signup', {
-        email: email,
-        error: 'That user already exists! Is it you?'
-      })
-      return
-    }
-
-    // Hash the password and store the user.
-    bcrypt.hash(password, 12, function (e, hash) {
-      if (e) {
-        console.log(e)
-        return res.status(500).render('500')
-      }
-
-      let params = req.permit('first', 'last')
-      params.email = email
-      params.password = hash
-
-      db.User.create(params).then(function (user) {
-        req.session.userId = user.id
-        res.redirect('/')
-      }).catch(res.error)
-    })
-  })
+  }).catch(res.error)
 })
-
