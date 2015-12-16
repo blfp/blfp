@@ -1,4 +1,5 @@
 #!/bin/bash -e
 
 standard
+./bin/reset
 tape test/index.js

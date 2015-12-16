@@ -7,6 +7,7 @@ const request = require('supertest')
 
 app.post('/signin', (req, res) => {
   db.User.where({email: req.body.email}).find().then((user) => {
+    if (!user) return res.status(401).end()
     req.signIn(user)
     res.end()
   }).catch(res.error)

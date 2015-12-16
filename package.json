@@ -14,7 +14,7 @@
     "build": "./bin/build",
     "postinstall": "./bin/postinstall",
     "start": "heroku local",
-    "test": "./bin/test"
+    "test": "heroku local:run --env=.testenv ./bin/test"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "standard": "5.4.1",
+    "supertest": "1.1.0",
     "tape": "4.2.2"
   }
 }

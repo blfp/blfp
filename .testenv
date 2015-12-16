@@ -1,0 +1,5 @@
+ID='blfp'
+DATABASE_URL='postgres://localhost/blfp_test'
+SECRET='test'
+NODE_ENV='test'
+HASH_ROUNDS=1
