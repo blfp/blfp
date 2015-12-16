@@ -17,14 +17,22 @@ DROP INDEX public.users_lower_case_email_index;
 DROP INDEX public.post_published_on_index;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
 ALTER TABLE ONLY public.tokens DROP CONSTRAINT tokens_pkey;
+ALTER TABLE ONLY public.settings DROP CONSTRAINT settings_pkey;
 ALTER TABLE ONLY public.posts DROP CONSTRAINT posts_pkey;
+ALTER TABLE ONLY public.photos DROP CONSTRAINT photos_pkey;
 ALTER TABLE public.users ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.settings ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.posts ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.photos ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE public.users_id_seq;
 DROP TABLE public.users;
 DROP TABLE public.tokens;
+DROP SEQUENCE public.settings_id_seq;
+DROP TABLE public.settings;
 DROP SEQUENCE public.posts_id_seq;
 DROP TABLE public.posts;
+DROP SEQUENCE public.photos_id_seq;
+DROP TABLE public.photos;
 DROP EXTENSION plpgsql;
 DROP SCHEMA public;
 --
@@ -62,6 +70,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE photos (
+    id integer NOT NULL,
+    image_updated_at timestamp with time zone,
+    image_ext character varying(255),
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE photos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
+
+
+--
 -- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -93,6 +133,35 @@ CREATE SEQUENCE posts_id_seq
 --
 
 ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- Name: settings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    announcement text
+);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
 
 
 --
@@ -145,7 +214,21 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
 
 
 --
@@ -156,11 +239,96 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
+-- Data for Name: photos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY photos (id, image_updated_at, image_ext, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('photos_id_seq', 1, true);
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY posts (id, user_id, created_at, updated_at, title, body, published_on) FROM stdin;
+\.
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 1, true);
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY settings (id, announcement) FROM stdin;
+1	No need to be blue, we can protect you from the flu. Come get your flu shot today. No appointment needed!
+\.
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('settings_id_seq', 1, true);
+
+
+--
+-- Data for Name: tokens; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY tokens (id, expires_at, user_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY users (id, created_at, updated_at, email, password, first, last, is_admin) FROM stdin;
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY photos
+    ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY posts
     ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
 
 
 --
