@@ -11,7 +11,7 @@ exports.portalUrl = 'https://www.medfusion.net/secure/portal/index.cfm?fuseactio
 
 // Assets
 
-let assetPath = exports.assetPath = function (path) {
+exports.assetPath = function (path) {
   if (process.env.NODE_ENV !== 'production') return `/${path}`
   return require('../assets.json')[path]
 }

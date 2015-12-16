@@ -14,7 +14,7 @@
     "build": "./bin/build",
     "postinstall": "./bin/postinstall",
     "start": "heroku local",
-    "test": "tape test/index.js"
+    "test": "./bin/test"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,6 @@
     "bcrypt": "0.8.5",
     "bootstrap": "3.3.5",
     "browserify": "11.2.0",
-    "cookie-session": "1.2.0",
     "cssnano": "3.2.0",
     "jquery": "2.1.4",
     "less": "2.5.3",
@@ -39,6 +38,7 @@
     "uglify-js": "2.4.24"
   },
   "devDependencies": {
+    "standard": "5.4.1",
     "tape": "4.2.2"
   }
 }

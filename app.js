@@ -3,7 +3,6 @@
 // Vendor
 let db = require('./db')
 let ozymandias = require('ozymandias')
-let session = require('cookie-session')
 
 // The App!
 let app = module.exports = ozymandias()
@@ -18,7 +17,7 @@ app.use('/posts', require('./routes/posts'))
 app.get('/', function (req, res) {
   db.Post
   .not({published_on: null})
-  .order(['published_on','descending'])
+  .order(['published_on', 'descending'])
   .limit(3).all()
   .then(function (posts) {
     res.render('index', {posts: posts})

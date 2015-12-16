@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+standard
+tape test/index.js
