@@ -1950,9 +1950,9 @@
       "resolved": "https://registry.npmjs.org/os-locale/-/os-locale-1.4.0.tgz"
     },
     "ozymandias": {
-      "version": "0.31.0",
-      "from": "git://github.com/braddunbar/ozymandias.git#1283611c9612c30fc232411048933a873101e868",
-      "resolved": "git://github.com/braddunbar/ozymandias.git#1283611c9612c30fc232411048933a873101e868",
+      "version": "0.32.0",
+      "from": "git://github.com/braddunbar/ozymandias.git#b9efc17ffbbef268f952721926089f5cbbebdd8a",
+      "resolved": "git://github.com/braddunbar/ozymandias.git#b9efc17ffbbef268f952721926089f5cbbebdd8a",
       "dependencies": {
         "cookie-session": {
           "version": "2.0.0-alpha.1",
