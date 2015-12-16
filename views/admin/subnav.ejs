@@ -1,0 +1,8 @@
+<ul class='nav nav-tabs subnav hidden-print'>
+  <li<% if (/^\/admin\/posts/i.test(req.originalUrl)) { %> class='active'<% } %>>
+    <a href='/admin/posts'>Posts</a>
+  </li>
+  <li<% if (/^\/admin\/photos/i.test(req.originalUrl)) { %> class='active'<% } %>>
+    <a href='/admin/photos'>Photos</a>
+  </li>
+</ul>
