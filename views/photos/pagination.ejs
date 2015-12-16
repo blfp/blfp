@@ -1,0 +1,10 @@
+<% if (photos.more) { %>
+  <a href='/photos?page=<%= page + 1 %>'>
+    Next Page →
+  </a>
+<% } %>
+<% if (page > 1) { %>
+  <a href='/photos?page=<%= page - 1 %>'>
+    ← Previous Page
+  </a>
+<% } %>

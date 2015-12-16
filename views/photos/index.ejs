@@ -1,0 +1,10 @@
+<main class='container'>
+  <% photos.forEach(function (photo) { %>
+    <a href='<%= photo.imagePath('large') %>' target='_blank'>
+      <img src='<%= photo.imagePath('medium') %>'>
+    </a>
+  <% }) %>
+  <div>
+    <% include pagination %>
+  </div>
+</main>

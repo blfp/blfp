@@ -12,6 +12,7 @@ app.locals = require('./helpers')
 app.use('/admin', require('./routes/admin'))
 app.use('/auth', require('./routes/auth'))
 app.use('/posts', require('./routes/posts'))
+app.use('/photos', require('./routes/photos'))
 
 // Home
 app.get('/', function (req, res) {
