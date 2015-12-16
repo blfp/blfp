@@ -9,3 +9,4 @@ router.use(function (req, res, next) {
 })
 
 router.use('/posts', require('./posts'))
+router.use('/photos', require('./photos'))

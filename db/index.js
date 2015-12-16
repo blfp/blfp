@@ -5,6 +5,7 @@ let db = module.exports = require('./db')
 db.Post = require('./post')
 db.User = require('./user')
 db.Token = require('ozymandias/token')
+db.Photo = require('./photo')
 
 db.Token.belongsTo('user', {
   key: 'user_id',

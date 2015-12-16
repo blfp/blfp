@@ -16,8 +16,8 @@ class Post extends Model {
       'title',
       'user_id',
       'published_on',
-      {name: 'created_at', property: 'createdAt'},
-      {name: 'updated_at', property: 'updatedAt'}
+      'created_at',
+      'updated_at'
     ]
   }
 
