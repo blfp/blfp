@@ -70,7 +70,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE photos (
@@ -102,7 +102,7 @@ ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE posts (
@@ -136,7 +136,7 @@ ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
 
 
 --
--- Name: settings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: settings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE settings (
@@ -165,7 +165,7 @@ ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
 
 
 --
--- Name: tokens; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: tokens; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE tokens (
@@ -176,7 +176,7 @@ CREATE TABLE tokens (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -297,6 +297,7 @@ COPY tokens (id, expires_at, user_id) FROM stdin;
 --
 
 COPY users (id, created_at, updated_at, email, password, first, last, is_admin) FROM stdin;
+1	2015-12-16 06:24:14.763527	2015-12-16 06:24:14.763527	admin@example.com	$2a$04$tGkU7nuX578X/1MYdSn6R.1iMTllPIAi3Zd21aZOy0bTxHNbQVXqW	Admin	User	t
 \.
 
 
@@ -304,11 +305,11 @@ COPY users (id, created_at, updated_at, email, password, first, last, is_admin) 
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('users_id_seq', 1, true);
+SELECT pg_catalog.setval('users_id_seq', 2, true);
 
 
 --
--- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY photos
@@ -316,7 +317,7 @@ ALTER TABLE ONLY photos
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY posts
@@ -324,7 +325,7 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY settings
@@ -332,7 +333,7 @@ ALTER TABLE ONLY settings
 
 
 --
--- Name: tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY tokens
@@ -340,7 +341,7 @@ ALTER TABLE ONLY tokens
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -348,14 +349,14 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: post_published_on_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: post_published_on_index; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX post_published_on_index ON posts USING btree (published_on);
 
 
 --
--- Name: users_lower_case_email_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_lower_case_email_index; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX users_lower_case_email_index ON users USING btree (lower((email)::text));
