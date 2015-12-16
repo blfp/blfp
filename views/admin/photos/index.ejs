@@ -10,6 +10,8 @@
   </form>
   <hr>
   <% photos.forEach(function (photo) { %>
-    <img src='<%= photo.imagePath('medium') %>'>
+    <a href='/admin/photos/<%= photo.id %>'>
+      <img src='<%= photo.imagePath('medium') %>'>
+    </a>
   <% }) %>
 </main>
