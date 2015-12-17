@@ -7,7 +7,9 @@ let router = module.exports = ozymandias.Router()
 router.find('post', () => db.Post.include('user'))
 
 router.get('/', function (req, res) {
-  db.Post.order(['published_on', 'descending']).include('user').all()
+  db.Post
+  .not({published_on: null})
+  .order(['published_on', 'descending']).include('user').all()
   .then(function (posts) {
     res.render('posts/index', {posts: posts})
   }).catch(res.error)
